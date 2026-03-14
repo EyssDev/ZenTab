@@ -395,6 +395,16 @@ button {
   color: #6f665f;
   line-height: 1.6;
 }
+.background-video{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+  opacity:0.15;
+}
 
 @media (max-width: 980px) {
   .hero-card {

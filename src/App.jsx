@@ -15,6 +15,14 @@ function App() {
 
   return (
     <div className="app-shell">
+      <video
+  className="background-video"
+  autoPlay
+  muted
+  loop
+>
+  <source src="/spa-video.mp4" type="video/mp4" />
+</video>
       <div className="background-overlay"></div>
 
       <header className="topbar">

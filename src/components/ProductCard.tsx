@@ -1,7 +1,13 @@
+import { motion } from "framer-motion"
+
 function ProductCard({ product, addToCart }) {
   return (
-    <article className="product-card">
-      <div className="product-image-wrapper">
+<motion.article
+  className="product-card"
+  whileHover={{ scale: 1.03 }}
+  transition={{ duration: 0.2 }}
+>
+          <div className="product-image-wrapper">
         <img src={product.image} alt={product.name} />
       </div>
 
@@ -17,7 +23,7 @@ function ProductCard({ product, addToCart }) {
           Ajouter au panier
         </button>
       </div>
-    </article>
+</motion.article>
   );
 }
 

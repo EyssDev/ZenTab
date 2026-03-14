@@ -1,25 +1,28 @@
+import { Bath, Droplets, Phone, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+
 function Services() {
 
   const services = [
     {
       title: "Serviette",
       description: "Demander une nouvelle serviette fraîche.",
-      icon: "🧖"
+      icon: Bath
     },
     {
       title: "Eau fraîche",
       description: "Recevoir une bouteille d'eau.",
-      icon: "💧"
+      icon: Droplets
     },
     {
       title: "Massage",
       description: "Réserver un soin ou massage relaxant.",
-      icon: "💆"
+      icon: Sparkles
     },
     {
       title: "Appeler l'accueil",
       description: "Contacter le personnel du spa.",
-      icon: "📞"
+      icon: Phone
     }
   ]
 
@@ -34,32 +37,35 @@ function Services() {
       <div className="section-heading">
         <p className="section-kicker">Services</p>
         <h2>Comment pouvons-nous vous aider ?</h2>
-        <p>
-          Sélectionnez un service et notre équipe s'occupera de votre demande.
-        </p>
       </div>
 
       <div className="services-grid">
 
-        {services.map((service, index) => (
+        {services.map((service, index) => {
 
-          <div
-            key={index}
-            className="service-card"
-            onClick={() => requestService(service)}
-          >
+          const Icon = service.icon
 
-            <div className="service-icon">
-              {service.icon}
-            </div>
+          return (
+            <motion.div
+              key={index}
+              className="service-card"
+              onClick={() => requestService(service)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
 
-            <h3>{service.title}</h3>
+              <div className="service-icon">
+                <Icon size={36}/>
+              </div>
 
-            <p>{service.description}</p>
+              <h3>{service.title}</h3>
 
-          </div>
+              <p>{service.description}</p>
 
-        ))}
+            </motion.div>
+          )
+
+        })}
 
       </div>
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
+import Services from "./pages/Services"
 import "./App.css";
 
 function App() {
@@ -43,6 +44,13 @@ function App() {
         </button>
 
         <button
+          className={page === "services" ? "active" : ""}
+          onClick={() => setPage("services")}
+        >
+          Services
+        </button>
+
+        <button
           className={page === "cart" ? "active" : ""}
           onClick={() => setPage("cart")}
         >
@@ -53,6 +61,7 @@ function App() {
       <main className="main-content">
         {page === "home" && <Home setPage={setPage} />}
         {page === "menu" && <Menu addToCart={addToCart} />}
+        {page === "services" && <Services />}
         {page === "cart" && <Cart cart={cart} />}
       </main>
     </div>

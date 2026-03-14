@@ -352,6 +352,50 @@ button {
   width: 100%;
 }
 
+.services-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 20px 60px rgba(64, 45, 24, 0.1);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 70px rgba(64, 45, 24, 0.18);
+}
+
+.service-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.service-card h3 {
+  margin: 10px 0 6px;
+  font-size: 20px;
+}
+
+.service-card p {
+  color: #6f665f;
+  line-height: 1.6;
+}
+
 @media (max-width: 980px) {
   .hero-card {
     grid-template-columns: 1fr;
@@ -405,4 +449,5 @@ button {
   .section-heading h2 {
     font-size: 28px;
   }
+  
 }

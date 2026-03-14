@@ -20,9 +20,12 @@ function Home({ setPage }) {
             Découvrir la carte
           </button>
 
-          <button className="secondary-btn">
-            Services du spa
-          </button>
+        <button
+        className="secondary-btn"
+        onClick={() => setPage("services")}
+        >
+        Services du spa
+        </button>
         </div>
       </div>
 

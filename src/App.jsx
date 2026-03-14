@@ -1,52 +1,60 @@
 import { useState } from "react";
-import products from "./data/products";
+import Home from "./pages/Home";
+import Menu from "./pages/Menu";
+import Cart from "./pages/Cart";
 import "./App.css";
 
 function App() {
+  const [page, setPage] = useState("home");
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    setCart((prev) => [...prev, product]);
   };
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Spa Lounge</h1>
-        <p>Commandez vos cocktails et services</p>
+    <div className="app-shell">
+      <div className="background-overlay"></div>
+
+      <header className="topbar">
+        <div>
+          <p className="eyebrow">Spa Experience</p>
+          <h1 className="brand-title">Aurora Wellness Lounge</h1>
+        </div>
+
+        <div className="topbar-right">
+          <div className="cart-badge">Panier · {cart.length}</div>
+        </div>
       </header>
 
-      <section className="products">
-        {products.map((product) => (
-          <div className="card" key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <strong>{product.price} €</strong>
-            <button onClick={() => addToCart(product)}>
-              Ajouter
-            </button>
-          </div>
-        ))}
-      </section>
+      <nav className="nav">
+        <button
+          className={page === "home" ? "active" : ""}
+          onClick={() => setPage("home")}
+        >
+          Accueil
+        </button>
 
-      <section className="cart">
-        <h2>Panier</h2>
-        {cart.length === 0 ? (
-          <p>Aucun article</p>
-        ) : (
-          <>
-            {cart.map((item, index) => (
-              <div key={index}>
-                {item.name} - {item.price} €
-              </div>
-            ))}
-            <h3>Total : {total} €</h3>
-          </>
-        )}
-      </section>
+        <button
+          className={page === "menu" ? "active" : ""}
+          onClick={() => setPage("menu")}
+        >
+          Cocktails
+        </button>
+
+        <button
+          className={page === "cart" ? "active" : ""}
+          onClick={() => setPage("cart")}
+        >
+          Panier
+        </button>
+      </nav>
+
+      <main className="main-content">
+        {page === "home" && <Home setPage={setPage} />}
+        {page === "menu" && <Menu addToCart={addToCart} />}
+        {page === "cart" && <Cart cart={cart} />}
+      </main>
     </div>
   );
 }
